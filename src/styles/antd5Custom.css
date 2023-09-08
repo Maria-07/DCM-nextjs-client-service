@@ -1,13 +1,3 @@
-:root {
-    --primary-color: #AB459F;
-    --secondary-shade: #77217A;
-    --lighter-shade: #EBBDE7;
-}
-
-
-
-
-
 .ant-card .ant-card-body {
     padding: 0px;
     border-radius: 0 0 8px 8px;

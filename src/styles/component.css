@@ -1,12 +1,3 @@
-:root {
-    --primary-color: #AB459F;
-    --secondary-shade: #77217A;
-    --lighter-shade: #EBBDE7;
-}
-
-
-
-
 .box {
     border-top: 10px solid var(--secondary-shade);
     border-bottom: 10px solid var(--secondary-shade);

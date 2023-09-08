@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import LibraryLayout from "@/component/Layouts/LibraryLayout";
+import RootLayout from "@/component/Layouts/RootLayout";
 import { Collapse, Dropdown, Select, Table, Tooltip } from "antd";
 import { useState } from "react";
 import {
@@ -8,16 +11,16 @@ import {
   BiFile,
   BiImport,
 } from "react-icons/bi";
-import TargetAddModal from "./TargetModal/TargetAddModal";
 import {
   DeleteOutlined,
   MessageOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import TargetDeleteModal from "./TargetModal/TargetDeleteModal";
-import ImportTargetModal from "./TargetModal/ImportTargetModal";
+import TargetAddModal from "@/component/UI/Library/Program/Target/TargetModal/TargetAddModal";
+import TargetDeleteModal from "@/component/UI/Library/Program/Target/TargetModal/TargetDeleteModal";
+import ImportTargetModal from "@/component/UI/Library/Program/Target/TargetModal/ImportTargetModal";
 
-const Target = () => {
+const targetPage = () => {
   const [type, setType] = useState(false);
   const [targetSetting, setTargetSetting] = useState(false);
   const [open, setOpen] = useState(false);
@@ -193,7 +196,25 @@ const Target = () => {
                     />
                   </div>
                 )}
-                <h1 className="font-medium">{record.target_title}</h1>
+                <div className="flex items-center justify-between">
+                  {" "}
+                  <h1 className="font-medium text-base">
+                    {record.target_title}
+                  </h1>
+                  <Tooltip
+                    placement="bottom"
+                    color={"#0C356A"}
+                    title="Target Setting"
+                  >
+                    {" "}
+                    <button
+                      onClick={() => setTargetSetting(!targetSetting)}
+                      className=" text-dark hover:text-primary flex items-center gap-3 text-base mx-4 font-semibold my-3"
+                    >
+                      <SettingOutlined className="text-xl" />
+                    </button>
+                  </Tooltip>
+                </div>
               </>
             )}
           </>
@@ -322,146 +343,147 @@ const Target = () => {
     },
   ];
   return (
-    <div className="py-5 min-h-[80vh]">
-      <div className="flex items-center justify-between flex-wrap">
-        <button
-          onClick={handleAddTarget}
-          className="dtm-button flex items-center gap-2"
-        >
-          <BiFile className="text-xl" /> ADD TARGET{" "}
-        </button>
-        <div className="flex items-center gap-2 mr-2">
-          <Tooltip
-            placement="bottom"
-            color={"#0C356A"}
-            title="See Discriminative stimulus (SD) on targets"
+    <div className="m-5 ">
+      <div className="bg-white min-h-[80vh] p-10 w-full border rounded-lg shadow-md ">
+        {" "}
+        <div className="flex items-center justify-between flex-wrap">
+          <button
+            onClick={handleAddTarget}
+            className="dtm-button flex items-center gap-2"
           >
+            <BiFile className="text-xl" /> ADD TARGET{" "}
+          </button>
+          <div className="flex items-center gap-2 mr-2">
+            <Tooltip
+              placement="bottom"
+              color={"#0C356A"}
+              title="See Discriminative stimulus (SD) on targets"
+            >
+              <button
+                onClick={() => setSetSD(!setSD)}
+                className="text-xs flex items-center gap-2 shadow-md bg-secondary text-white px-3 py-1 rounded-md"
+              >
+                <MessageOutlined /> ADD SD
+              </button>
+            </Tooltip>
+
             <button
-              onClick={() => setSetSD(!setSD)}
+              onClick={handleImportTarget}
               className="text-xs flex items-center gap-2 shadow-md bg-secondary text-white px-3 py-1 rounded-md"
             >
-              <MessageOutlined /> ADD SD
+              <BiImport /> IMPORTS
             </button>
-          </Tooltip>
 
-          <button
-            onClick={handleImportTarget}
-            className="text-xs flex items-center gap-2 shadow-md bg-secondary text-white px-3 py-1 rounded-md"
-          >
-            <BiImport /> IMPORTS
-          </button>
-
-          <Dropdown
-            dropdownRender={() => (
-              <div className="bg-white  w-[250px] border shadow-md rounded-sm">
-                <div>
-                  <button
-                    // onClick={handleImportProgram}
-                    className="p-3 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-semibold "
-                  >
-                    Export Targets to clipboard
-                  </button>
-                  <button
-                    onClick={() => setType(!type)}
-                    className="p-3 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-semibold "
-                  >
-                    Default Target Type
-                  </button>
-                </div>
-                {type && (
-                  <div className="transition-all">
+            <Dropdown
+              dropdownRender={() => (
+                <div className="bg-white  w-[250px] border shadow-md rounded-sm">
+                  <div>
                     <button
-                      onClick={() => setType(!type)}
-                      className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
+                      // onClick={handleImportProgram}
+                      className="p-3 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-semibold "
                     >
-                      Discrete Trails
+                      Export Targets to clipboard
                     </button>
                     <button
                       onClick={() => setType(!type)}
-                      className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
+                      className="p-3 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-semibold "
                     >
-                      Discrete Trails
-                    </button>
-                    <button
-                      onClick={() => setType(!type)}
-                      className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
-                    >
-                      Discrete Trails
-                    </button>
-                    <button
-                      onClick={() => setType(!type)}
-                      className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
-                    >
-                      Discrete Trails
-                    </button>
-                    <button
-                      onClick={() => setType(!type)}
-                      className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
-                    >
-                      Discrete Trails
-                    </button>
-                    <button
-                      onClick={() => setType(!type)}
-                      className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
-                    >
-                      Discrete Trails
-                    </button>
-                    <button
-                      onClick={() => setType(!type)}
-                      className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
-                    >
-                      Discrete Trails
-                    </button>
-                    <button
-                      onClick={() => setType(!type)}
-                      className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
-                    >
-                      Discrete Trails
+                      Default Target Type
                     </button>
                   </div>
-                )}
-              </div>
-            )}
-            placement="bottomRight"
-            arrow
-          >
-            <BiDotsVertical className="text-xl" />
-          </Dropdown>
+                  {type && (
+                    <div className="transition-all">
+                      <button
+                        onClick={() => setType(!type)}
+                        className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
+                      >
+                        Discrete Trails
+                      </button>
+                      <button
+                        onClick={() => setType(!type)}
+                        className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
+                      >
+                        Discrete Trails
+                      </button>
+                      <button
+                        onClick={() => setType(!type)}
+                        className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
+                      >
+                        Discrete Trails
+                      </button>
+                      <button
+                        onClick={() => setType(!type)}
+                        className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
+                      >
+                        Discrete Trails
+                      </button>
+                      <button
+                        onClick={() => setType(!type)}
+                        className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
+                      >
+                        Discrete Trails
+                      </button>
+                      <button
+                        onClick={() => setType(!type)}
+                        className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
+                      >
+                        Discrete Trails
+                      </button>
+                      <button
+                        onClick={() => setType(!type)}
+                        className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
+                      >
+                        Discrete Trails
+                      </button>
+                      <button
+                        onClick={() => setType(!type)}
+                        className="py-3 px-8 text-dark hover:text-primary w-full hover:bg-gray-100 flex items-center gap-2 text-base font-medium "
+                      >
+                        Discrete Trails
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+              placement="bottomRight"
+              arrow
+            >
+              <BiDotsVertical className="text-xl" />
+            </Dropdown>
+          </div>
         </div>
-      </div>
-
-      <div className="my-5">
-        <div className=" overflow-scroll">
-          <Table
-            pagination={false}
-            rowKey={(record) => record.id}
-            size="small"
-            bordered
-            className="table-striped-rows text-xs font-normal"
-            columns={columns}
-            dataSource={demoData}
-            rowSelection={{
-              ...rowSelection,
-            }}
-            // scroll={{
-            //   y: 650,
-            // }}
-            onChange={handleChange}
-          />
+        <div className="my-5">
+          <div className=" overflow-scroll">
+            <Table
+              pagination={false}
+              rowKey={(record) => record.id}
+              size="small"
+              bordered
+              className="table-striped-rows text-xs font-normal"
+              columns={columns}
+              dataSource={demoData}
+              rowSelection={{
+                ...rowSelection,
+              }}
+              // scroll={{
+              //   y: 650,
+              // }}
+              onChange={handleChange}
+            />
+          </div>
         </div>
-      </div>
-
-      <div className="my-10">
-        <div className="flex gap-3 items-end justify-start mb-2 mt-4">
-          <button
-            type="submit"
-            className="font-medium  bg-primary text-white hover:bg-sky-50 transition-all px-2 py-1 border border-primary rounded-md"
-          >
-            Save
-          </button>
-          <button className="font-medium text-rose-600 hover:bg-rose-50 transition-all px-2 py-1 border border-rose-500 rounded-md">
-            Cancel
-          </button>
+        <div className="my-10">
+          <div className="flex gap-3 items-end justify-start mb-2 mt-4">
+            <button
+              type="submit"
+              className="font-medium text-sm  bg-primary text-white hover:bg-secondary transition-all px-2 py-1 border border-primary rounded-md"
+            >
+              Save
+            </button>
+            <button className="font-medium text-sm text-rose-600 hover:bg-rose-50 transition-all px-2 py-1 border border-rose-500 rounded-md">
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
 
@@ -487,4 +509,12 @@ const Target = () => {
   );
 };
 
-export default Target;
+export default targetPage;
+
+targetPage.getLayout = function getLayout(page) {
+  return (
+    <RootLayout>
+      <LibraryLayout>{page}</LibraryLayout>
+    </RootLayout>
+  );
+};

@@ -1,11 +1,8 @@
-import React from "react";
 import Link from "next/link";
 import { useState } from "react";
 import {
   BiCalendarWeek,
-  BiDotsHorizontal,
   BiLibrary,
-  BiMenu,
   BiSolidDashboard,
   BiSolidReport,
   BiUser,
@@ -18,12 +15,12 @@ import { motion } from "framer-motion";
 import Navbar from "../UI/Layouts/Navbar/Navbar";
 import SidebarMenu from "../UI/Layouts/Sidebar/SidebarMenu";
 import logo1 from "../../assets/img/LOGO.png";
-import logo2 from "../../assets/img/logo2.png";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { SettingOutlined } from "@ant-design/icons";
 import Head from "next/head";
 import Footer from "../UI/Layouts/Footer";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 const menuItem = [
   {
@@ -105,6 +102,8 @@ const RootLayout = ({ children }) => {
   const handleFixed = () => {
     dispatch(handleSidebarFixed());
   };
+
+  const handle = useFullScreenHandle();
 
   return (
     <>
@@ -217,9 +216,12 @@ const RootLayout = ({ children }) => {
             <div className="lg:ml-[98px] lg:mr-[22px] mx-2">
               <Navbar></Navbar>
             </div>
-            <main className=" p-4 font-medium min-h-screen main bg-white shadow-md rounded-2xl w-auto mt-2 mx-2 lg:ml-[98px] lg:mr-[22px]">
-              {children}
-            </main>
+
+            <FullScreen handle={handle}>
+              <main className=" p-4 font-medium min-h-screen main bg-[#fff] border shadow-md rounded-2xl w-auto mt-4 mx-2 lg:ml-[98px] lg:mr-[22px]">
+                {children}
+              </main>
+            </FullScreen>
 
             <Footer></Footer>
           </motion.div>

@@ -58,9 +58,7 @@ const LibraryLayout = ({ children }) => {
       <hr className="mt-5" />
       <div className="flex">
         <LibrarySidebar></LibrarySidebar>
-        <div className="bg-gray-100 w-full min-h-[100vh]">
-          this is {children}
-        </div>
+        <div className="bg-gray-50 w-full min-h-[80vh]">{children}</div>
       </div>
     </div>
   );

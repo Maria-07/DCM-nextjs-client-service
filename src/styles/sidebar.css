@@ -24,8 +24,8 @@
 } */
 
 .link:hover {
-  background: #EBBDE7;
-  color: #373737;
+  background: var(--primary-color);
+  color: #fff;
   transition: all 0.1s;
   /* margin: 5px;
   border-radius: 10px; */
@@ -33,8 +33,8 @@
 }
 
 .link-active {
-  background: #EBBDE7;
-  color: #373737;
+  background: var(--primary-color);
+  color: #fff;
 }
 
 

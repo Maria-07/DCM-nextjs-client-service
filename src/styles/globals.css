@@ -25,15 +25,22 @@ color {
   #1D5D9B
   #0C356A
   #19A7CE
+  #8294bb
 } 
-
-
-
 */
+
+:root {
+  --primary-font: 14px;
+  --primary-color: #7686a9;
+  --secondary-shade: #233867;
+  --lighter-shade: #e0f3ff;
+  --background-color: #f3f8ff
+}
+
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #F8F8F8;
+  background-color: var(--background-color);
   letter-spacing: 0.2px;
 }
 
@@ -55,7 +62,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   /* box-shadow: 0px 0px 2px 0.5px #004d54; */
-  background-color: #279EFF;
+  background-color: var(--primary-color);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;

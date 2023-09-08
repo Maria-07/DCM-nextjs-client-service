@@ -1,4 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import LibraryLayout from "@/component/Layouts/LibraryLayout";
+import RootLayout from "@/component/Layouts/RootLayout";
 import { AlignCenterOutlined } from "@ant-design/icons";
 import { Select } from "antd";
 import { useState } from "react";
@@ -30,14 +32,13 @@ const treatmentPage = () => {
   const onSubmit = async (data) => {};
 
   return (
-    <div className=" min-h-[80vh]">
+    <div className="m-5 min-h-[80vh]">
       <form onSubmit={handleSubmit(onSubmit)}>
-        {" "}
-        <div className="grid grid-cols-3 gap-8">
-          <div className="col-span-2 border-r-2 py-3 pr-5">
-            <div className="grid grid-cols-3 gap-4">
+        <div className="flex gap-5">
+          <div className="bg-white p-10 w-[80%] border rounded-lg shadow-md min-h-[100vh]">
+            <div className="grid 2xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
               <div>
-                <h1 className="text-base text-secondary mb-2 font-medium">
+                <h1 className="text-sm text-secondary mb-2 font-medium">
                   Treatment Area
                 </h1>
                 <Select
@@ -55,7 +56,7 @@ const treatmentPage = () => {
                 />
               </div>
               <div>
-                <h1 className="text-base text-secondary mb-2 font-medium">
+                <h1 className="text-sm text-secondary mb-2 font-medium">
                   Baseline
                 </h1>
                 <input
@@ -65,7 +66,7 @@ const treatmentPage = () => {
                 />
               </div>
               <div>
-                <h1 className="text-base text-secondary mb-2 font-medium">
+                <h1 className="text-sm text-secondary mb-2 font-medium">
                   Current Performance
                 </h1>
                 <input
@@ -75,7 +76,7 @@ const treatmentPage = () => {
                 />
               </div>
               <div>
-                <h1 className="text-base text-secondary mb-2 font-medium">
+                <h1 className="text-sm text-secondary mb-2 font-medium">
                   Previous Performance
                 </h1>
                 <input
@@ -84,8 +85,8 @@ const treatmentPage = () => {
                   className="input-border w-[100%]"
                 />
               </div>
-              <div className="">
-                <h1 className="text-base text-secondary mb-2 font-medium">
+              <div className="sm:col-span-2">
+                <h1 className="text-sm text-secondary mb-2 font-medium">
                   Objective
                 </h1>
                 <input
@@ -99,85 +100,104 @@ const treatmentPage = () => {
               <div className="flex gap-3 items-end justify-start mb-2 mt-4">
                 <button
                   type="submit"
-                  className="font-medium  bg-primary text-white hover:bg-sky-50 transition-all px-2 py-1 border border-primary rounded-md"
+                  className="font-medium text-sm  bg-primary text-white hover:bg-secondary transition-all px-2 py-1 border border-primary rounded-md"
                 >
                   Save
                 </button>
-                <button className="font-medium text-rose-600 hover:bg-rose-50 transition-all px-2 py-1 border border-rose-500 rounded-md">
+                <button className="font-medium text-sm text-rose-600 hover:bg-rose-50 transition-all px-2 py-1 border border-rose-500 rounded-md">
                   Cancel
                 </button>
               </div>
             </div>
           </div>
-          <div className="mx-auto p-3">
-            <h1 className="text-base text-gray mb-5">Program Status</h1>
-
+          <div className="w-[20%] bg-white px-5 py-5 border rounded-lg shadow-md">
+            <h1 className="text-base font-semibold text-primary text-center text-gray mb-5">
+              Program Status
+            </h1>
             <div className="">
-              <button
-                className={
-                  status === "waiting"
-                    ? "mx-auto border-2 border-primary rounded-full p-5  bg-primary text-white transition-all w-[120px] h-[120px]"
-                    : "mx-auto border-2 border-primary rounded-full p-5  hover:bg-primary hover:text-white transition-all w-[120px] h-[120px] my-3"
-                }
-              >
-                <BiSolidWatch className="text-2xl mx-auto" />
-                <h1 className="text-base font-medium my-2">Waiting</h1>
-              </button>
-              <br />
-              <button
-                className={
-                  status === "BaseLine"
-                    ? "mx-auto border-2 border-primary rounded-full p-5  bg-primary text-white transition-all w-[120px] h-[120px]"
-                    : "mx-auto border-2 border-primary rounded-full p-5  hover:bg-primary hover:text-white transition-all w-[120px] h-[120px] my-3"
-                }
-              >
-                <AlignCenterOutlined className="text-2xl mx-auto" />
-                <h1 className="text-base font-medium my-2">BaseLine</h1>
-              </button>
-              <br />
-              <button
-                className={
-                  status === "active"
-                    ? "mx-auto border-2 border-primary rounded-full p-5  bg-primary text-white transition-all w-[120px] h-[120px]"
-                    : "mx-auto border-2 border-primary rounded-full p-5  hover:bg-primary hover:text-white transition-all w-[120px] h-[120px] my-3"
-                }
-              >
-                <BiRun className="text-2xl mx-auto" />
-                <h1 className="text-base font-medium my-2">Active</h1>
-              </button>
-              <br />
-              <button
-                className={
-                  status === "hold"
-                    ? "mx-auto border-2 border-primary rounded-full p-5  bg-primary text-white transition-all w-[120px] h-[120px]"
-                    : "mx-auto border-2 border-primary rounded-full p-5  hover:bg-primary hover:text-white transition-all w-[120px] h-[120px] my-3"
-                }
-              >
-                <BiSolidHand className="text-2xl mx-auto" />
-                <h1 className="text-base font-medium my-2">Hold</h1>
-              </button>
-              <br />
-              <button
-                className={
-                  status === "close"
-                    ? "mx-auto border-2 border-primary rounded-full p-5  bg-primary text-white transition-all w-[120px] h-[120px]"
-                    : "mx-auto border-2 border-primary rounded-full p-5  hover:bg-primary hover:text-white transition-all w-[120px] h-[120px] my-3"
-                }
-              >
-                <BiWindowClose className="text-2xl mx-auto" />
-                <h1 className="text-base font-medium my-2">Closed</h1>
-              </button>
-              <br />
-              <button
-                className={
-                  status === "disconnect"
-                    ? "mx-auto border-2 border-primary rounded-full p-5  bg-primary text-white transition-all w-[120px] h-[120px]"
-                    : "mx-auto border-2 border-primary rounded-full p-5  hover:bg-primary hover:text-white transition-all w-[120px] h-[120px] my-3"
-                }
-              >
-                <BiCut className="text-2xl mx-auto" />
-                <h1 className="text-base font-medium my-2">Disconnect</h1>
-              </button>
+              <div className="flex items-center justify-center my-2">
+                <button
+                  onClick={() => setStatus("waiting")}
+                  className={
+                    status === "waiting"
+                      ? "mx-auto border-2 shadow-sm rounded-md p-3 border-secondary  text-secondary transition-all h-[90px] w-[120px]"
+                      : "mx-auto border-2 shadow-sm rounded-md p-3 hover:border-secondary hover:text-secondary transition-all h-[90px] w-[120px]"
+                  }
+                >
+                  <BiSolidWatch className="text-2xl mx-auto" />
+                  <h1 className="text-sm font-semibold mt-2">Waiting</h1>
+                </button>
+              </div>
+              <div className="flex items-center justify-center my-2">
+                {" "}
+                <button
+                  onClick={() => setStatus("BaseLine")}
+                  className={
+                    status === "BaseLine"
+                      ? "mx-auto border-2 shadow-sm rounded-md p-3 border-secondary  text-secondary transition-all h-[90px] w-[120px]"
+                      : "mx-auto border-2 shadow-sm rounded-md p-3 hover:border-secondary hover:text-secondary transition-all h-[90px] w-[120px]"
+                  }
+                >
+                  <AlignCenterOutlined className="text-2xl mx-auto" />
+                  <h1 className="text-sm font-semibold mt-2">BaseLine</h1>
+                </button>
+              </div>
+              <div className="flex items-center justify-center my-2">
+                {" "}
+                <button
+                  onClick={() => setStatus("active")}
+                  className={
+                    status === "active"
+                      ? "mx-auto border-2 shadow-sm rounded-md p-3 border-secondary  text-secondary transition-all h-[90px] w-[120px]"
+                      : "mx-auto border-2 shadow-sm rounded-md p-3 hover:border-secondary hover:text-secondary transition-all h-[90px] w-[120px]"
+                  }
+                >
+                  <BiRun className="text-2xl mx-auto" />
+                  <h1 className="text-sm font-semibold mt-2">Active</h1>
+                </button>
+              </div>
+              <div className="flex items-center justify-center my-2">
+                {" "}
+                <button
+                  onClick={() => setStatus("hold")}
+                  className={
+                    status === "hold"
+                      ? "mx-auto border-2 shadow-sm rounded-md p-3 border-secondary  text-secondary transition-all h-[90px] w-[120px]"
+                      : "mx-auto border-2 shadow-sm rounded-md p-3 hover:border-secondary hover:text-secondary transition-all h-[90px] w-[120px]"
+                  }
+                >
+                  <BiSolidHand className="text-2xl mx-auto" />
+                  <h1 className="text-sm font-semibold mt-2">Hold</h1>
+                </button>
+              </div>
+              <div className="flex items-center justify-center my-2">
+                {" "}
+                <button
+                  onClick={() => setStatus("close")}
+                  className={
+                    status === "close"
+                      ? "mx-auto border-2 shadow-sm rounded-md p-3 border-secondary  text-secondary transition-all h-[90px] w-[120px]"
+                      : "mx-auto border-2 shadow-sm rounded-md p-3 hover:border-secondary hover:text-secondary transition-all h-[90px] w-[120px]"
+                  }
+                >
+                  <BiWindowClose className="text-2xl mx-auto" />
+                  <h1 className="text-sm font-semibold mt-2">Closed</h1>
+                </button>
+              </div>
+              <div className="flex items-center justify-center my-2">
+                {" "}
+                <button
+                  onClick={() => setStatus("disconnect")}
+                  className={
+                    status === "disconnect"
+                      ? "mx-auto border-2 shadow-sm rounded-md p-3 border-secondary  text-secondary transition-all h-[90px] w-[120px]"
+                      : "mx-auto border-2 shadow-sm rounded-md p-3 hover:border-secondary hover:text-secondary transition-all h-[90px] w-[120px]"
+                  }
+                >
+                  <BiCut className="text-2xl mx-auto" />
+                  <h1 className="text-sm font-semibold mt-2">Disconnect</h1>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -187,3 +207,11 @@ const treatmentPage = () => {
 };
 
 export default treatmentPage;
+
+treatmentPage.getLayout = function getLayout(page) {
+  return (
+    <RootLayout>
+      <LibraryLayout>{page}</LibraryLayout>
+    </RootLayout>
+  );
+};

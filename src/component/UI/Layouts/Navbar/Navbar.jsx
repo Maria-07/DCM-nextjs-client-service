@@ -1,6 +1,7 @@
 import { Dropdown, Image } from "antd";
 import Link from "next/link";
 import {
+  BiExitFullscreen,
   BiFullscreen,
   BiLockOpen,
   BiPlusCircle,
@@ -42,7 +43,21 @@ const Navbar = ({ handle }) => {
         </div>
         <div className="flex items-center gap-6 text-[25px] text-dark">
           <div>
-            <BiFullscreen className="hover:text-primary" />
+            {!handle.active ? (
+              <div>
+                <BiFullscreen
+                  onClick={handle.enter}
+                  className="hover:text-primary"
+                />
+              </div>
+            ) : (
+              <div>
+                <BiExitFullscreen
+                  onClick={handle.exit}
+                  className="hover:text-primary"
+                />
+              </div>
+            )}
           </div>
 
           <div>

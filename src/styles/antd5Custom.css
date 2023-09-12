@@ -231,3 +231,53 @@ a:hover {
     color: var(--primary-color);
     text-shadow: 0 0 0.25px currentcolor;
 }
+
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover .ant-checkbox-inner,
+.ant-checkbox:not(.ant-checkbox-disabled):hover .ant-checkbox-inner {
+    border-color: var(--primary-color);
+}
+
+.ant-checkbox-indeterminate .ant-checkbox-inner:after {
+    top: 50%;
+    inset-inline-start: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border: 0;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    content: "";
+}
+
+.ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover .ant-checkbox-checked:not(.ant-checkbox-disabled):after {
+    border-color: var(--primary-color);
+}
+
+
+/*-------------- TOGGLE ---------------*/
+
+.ant-switch.ant-switch-checked {
+    background: var(--secondary-shade);
+}
+
+.ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+    background: var(--secondary-shade);
+}
+
+.ant-switch.ant-switch-small.ant-switch-checked .ant-switch-inner {
+    padding-inline-start: 6px;
+    padding-inline-end: 18px;
+    background-color: var(--secondary-shade);
+}
+
+.ant-switch.ant-switch-small .ant-switch-inner {
+    padding-inline-start: 18px;
+    padding-inline-end: 6px;
+    background-color: rgb(144, 144, 144);
+}

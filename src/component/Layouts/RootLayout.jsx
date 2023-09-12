@@ -116,116 +116,116 @@ const RootLayout = ({ children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <>
-        <div className="relative bg-neutral pt-3 pb-2">
-          <>
-            {/* If fixed part no available  */}
-            <div
-              onMouseOver={handleMouseOver}
-              onMouseOut={handleMouseOut}
-              className=" fixed bg-secondary left-0 top-0 z-30 "
-            >
+        <FullScreen handle={handle}>
+          <div className="relative bg-neutral pt-3 pb-2 bg-[#f3f8ff]">
+            <>
+              {/* If fixed part no available  */}
               <div
-                className={
-                  isHovering
-                    ? " w-[250px] sidebar-box h-[100vh] sidebar-transition"
-                    : " w-[70px] sidebar-box h-[100vh] sidebar-transition"
-                }
+                onMouseOver={handleMouseOver}
+                onMouseOut={handleMouseOut}
+                className=" fixed bg-secondary left-0 top-0 z-30 "
               >
-                <div className="top-section mb-2">
-                  {isHovering ? (
-                    <>
-                      <div className=" transition-all text-primary">
-                        <Image
-                          src={logo1}
-                          width={"100%"}
-                          height={"auto"}
-                          alt="Picture of the author"
-                        />
-                      </div>
-                      {/* <button onClick={handleFixed}>
-                        <BiDotsHorizontal className="text-2xl text-primary ml-[10px] isFixed" />
-                      </button> */}
-                    </>
-                  ) : (
-                    <>
-                      <div className="text-lg">DCM</div>
-                    </>
-                  )}
-                </div>
                 <div
                   className={
-                    height <= 720 ? "sidebar-scrolling pb-10" : "pb-10"
+                    isHovering
+                      ? " w-[250px] sidebar-box h-[100vh] sidebar-transition"
+                      : " w-[70px] sidebar-box h-[100vh] sidebar-transition"
                   }
                 >
-                  {menuItem.map((items, index) => (
-                    <div key={index}>
-                      {items.subRoute ? (
-                        <Link href={"#"} key={index} className="">
-                          <SidebarMenu
-                            setSideBar={setSideBar}
-                            items={items}
-                            isHovering={isHovering}
-                            dropState={dropState[items.name]}
-                            handleDropState={handleDropState}
-                            // handleSidebar={handleSidebar}
-                          ></SidebarMenu>
-                        </Link>
-                      ) : (
-                        <Link
-                          href={items.path}
-                          key={index}
-                          // className="link flex"
-                          className={
-                            currentRoute === items.path
-                              ? "link-active link flex"
-                              : "link flex"
-                          }
-                          onClick={(_) => {
-                            handleDropState("other");
-                          }}
-                        >
-                          <div className="flex items-center">
-                            <div className=" text-xl px-2 py-1">
-                              {items.icon}
+                  <div className="top-section mb-2">
+                    {isHovering ? (
+                      <>
+                        <div className=" transition-all text-primary">
+                          <Image
+                            src={logo1}
+                            width={"100%"}
+                            height={"auto"}
+                            alt="Picture of the author"
+                          />
+                        </div>
+                        {/* <button onClick={handleFixed}>
+                        <BiDotsHorizontal className="text-2xl text-primary ml-[10px] isFixed" />
+                      </button> */}
+                      </>
+                    ) : (
+                      <>
+                        <div className="text-lg">DCM</div>
+                      </>
+                    )}
+                  </div>
+                  <div
+                    className={
+                      height <= 720 ? "sidebar-scrolling pb-10" : "pb-10"
+                    }
+                  >
+                    {menuItem.map((items, index) => (
+                      <div key={index}>
+                        {items.subRoute ? (
+                          <Link href={"#"} key={index} className="">
+                            <SidebarMenu
+                              setSideBar={setSideBar}
+                              items={items}
+                              isHovering={isHovering}
+                              dropState={dropState[items.name]}
+                              handleDropState={handleDropState}
+                              // handleSidebar={handleSidebar}
+                            ></SidebarMenu>
+                          </Link>
+                        ) : (
+                          <Link
+                            href={items.path}
+                            key={index}
+                            // className="link flex"
+                            className={
+                              currentRoute === items.path
+                                ? "link-active link flex"
+                                : "link flex"
+                            }
+                            onClick={(_) => {
+                              handleDropState("other");
+                            }}
+                          >
+                            <div className="flex items-center">
+                              <div className=" text-xl px-2 py-1">
+                                {items.icon}
+                              </div>
+                              <div
+                                className={
+                                  isHovering
+                                    ? " transition duration-500 ease-in-out text-[16px]  font-semibold"
+                                    : " transition duration-500 ease-in-out text-[16px] font-semibold hidden"
+                                }
+                              >
+                                {items.name}
+                              </div>
                             </div>
-                            <div
-                              className={
-                                isHovering
-                                  ? " transition duration-500 ease-in-out text-[16px]  font-semibold"
-                                  : " transition duration-500 ease-in-out text-[16px] font-semibold hidden"
-                              }
-                            >
-                              {items.name}
-                            </div>
-                          </div>
-                        </Link>
-                      )}
-                    </div>
-                  ))}
+                          </Link>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          </>
+            </>
 
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="slide"
-          >
-            <div className="lg:ml-[98px] lg:mr-[22px] mx-2">
-              <Navbar></Navbar>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="slide"
+            >
+              <div className="lg:ml-[98px] lg:mr-[22px] mx-2">
+                <Navbar handle={handle}></Navbar>
+              </div>
 
-            <FullScreen handle={handle}>
               <main className=" p-4 font-medium min-h-screen main bg-[#fff] border shadow-md rounded-2xl w-auto mt-4 mx-2 lg:ml-[98px] lg:mr-[22px]">
                 {children}
               </main>
-            </FullScreen>
 
-            <Footer></Footer>
-          </motion.div>
-        </div>
+              <Footer></Footer>
+            </motion.div>
+          </div>
+        </FullScreen>
       </>
     </>
   );

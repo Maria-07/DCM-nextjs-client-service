@@ -28,7 +28,7 @@ const NewEligibilityInquiry = ({ handleClose, eligibility }) => {
         closable={false}
         className="box rounded-xl "
       >
-        <div className="px-5 py-2">
+        <div className="px-3 py-2">
           <div className="flex items-center justify-between">
             <h1 className="text-lg text-left text-orange-400">
               New Eligibility Inquiry
@@ -63,7 +63,7 @@ const NewEligibilityInquiry = ({ handleClose, eligibility }) => {
                 <span className="modal-label-name">Patient Name</span>
               </label>
               <select
-                className="col-span-2 modal-input-field ml-1 w-full"
+                className="col-span-2 input-border-modal ml-1 w-full"
                 {...register("patients")}
               >
                 <option value=""></option>
@@ -74,7 +74,7 @@ const NewEligibilityInquiry = ({ handleClose, eligibility }) => {
                 <span className="modal-label-name">Auth</span>
               </label>
               <select
-                className="col-span-2 modal-input-field ml-1 w-full"
+                className="col-span-2 input-border-modal ml-1 w-full"
                 {...register("Auth")}
               >
                 <option value=""></option>
@@ -85,7 +85,7 @@ const NewEligibilityInquiry = ({ handleClose, eligibility }) => {
                 <span className="modal-label-name">Benefit Type</span>
               </label>
               <select
-                className="col-span-2 modal-input-field ml-1 w-full"
+                className="col-span-2 input-border-modal ml-1 w-full"
                 {...register("benefit_type")}
               >
                 <option value=""></option>
@@ -98,14 +98,14 @@ const NewEligibilityInquiry = ({ handleClose, eligibility }) => {
               <input
                 name="check_date"
                 type="date"
-                className="col-span-2 modal-input-field ml-1 w-full px-2"
+                className="col-span-2 input-border-modal ml-1 w-full px-2"
                 {...register("check_date")}
               />
               <label className="label">
                 <span className="modal-label-name">NPI</span>
               </label>
               <select
-                className="col-span-2 modal-input-field ml-1 w-full"
+                className="col-span-2 input-border-modal ml-1 w-full"
                 {...register("npi")}
               >
                 <option value=""></option>
@@ -116,11 +116,11 @@ const NewEligibilityInquiry = ({ handleClose, eligibility }) => {
 
             <div className="bg-gray-200 py-[1px] mt-3"></div>
             <div className=" flex items-end justify-end mt-2">
-              <button className=" pms-button mr-2" type="submit">
+              <button className=" dcm-button mr-2" type="submit">
                 Request Eligibility
               </button>
 
-              <button className="pms-close-button" onClick={handleClose}>
+              <button className="dcm-close-button" onClick={handleClose}>
                 Close
               </button>
             </div>
